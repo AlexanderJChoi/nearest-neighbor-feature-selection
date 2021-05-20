@@ -14,6 +14,9 @@ for line in fileinput.input(filename):
 
 fileinput.close()   
 num_features = len(filein[0]) - 1
+data_len = len(filein)
+
+print("This dataset has "+str(num_features)+" features, with "+str(data_len)+" instances.")
 
 def normalize(arrayin, arrayout):
     mean_val = fmean(arrayin)
@@ -37,7 +40,7 @@ def search_feature_space_forward(data_in):
                 # create temp set of features #'s
                 temp_set = current_set.union({i})
                 # test temp set of features, get accuracy
-                accuracy_i = randint(0,1000) / 1000 
+                accuracy_i = cross_validation(data_in, temp_set) 
                 print("Considering features " + str(temp_set)+": accuracy of " + str(accuracy_i))
                 if(accuracy_i > max_accuracy_i):
                     max_accuracy_i = accuracy_i
@@ -47,7 +50,7 @@ def search_feature_space_forward(data_in):
         if(max_accuracy_i > max_accuracy):
             max_set = current_set.copy()
             max_accuracy = max_accuracy_i
-            print("Found new max: " + str(max_set)+":"+str(current_set) + " with accuracy: " + str(max_accuracy)+":"+str(max_accuracy_i))
+            print("Found new max: " + str(max_set)+ " with accuracy: " + str(max_accuracy))
         search_level+=1
 
     print("Best set was "+str(max_set)+" with accuracy of "+str(max_accuracy))
@@ -56,7 +59,7 @@ def search_feature_space_backward(data_in):
     all_features = range(1,num_features+1) #num_features+1 is not included
     current_set = set(all_features)
     max_set = current_set.copy()
-    max_accuracy = randint(0,1000) / 1000 #set max_accuracy equal to accuracy of all features set 
+    max_accuracy = cross_validation(data_in, current_set) #set max_accuracy equal to accuracy of all features set 
     print("Considering all features: "+str(current_set)+": accuracy of " + str(max_accuracy))
 
     search_level = 1
@@ -69,7 +72,7 @@ def search_feature_space_backward(data_in):
                 # create temp set of features #'s
                 temp_set = current_set.difference({i})
                 # test temp set of features, get accuracy
-                accuracy_i = randint(0,1000) / 1000 
+                accuracy_i = cross_validation(data_in, temp_set)
                 print("Considering features " + str(temp_set)+": accuracy of " + str(accuracy_i))
                 if(accuracy_i > max_accuracy_i):
                     max_accuracy_i = accuracy_i
@@ -79,7 +82,7 @@ def search_feature_space_backward(data_in):
         if(max_accuracy_i > max_accuracy):
             max_set = current_set.copy()
             max_accuracy = max_accuracy_i
-            print("Found new max: " + str(max_set)+":"+str(current_set) + " with accuracy: " + str(max_accuracy)+":"+str(max_accuracy_i))
+            print("Found new max: " + str(max_set)+ " with accuracy: " + str(max_accuracy))
         search_level+=1
 
     print("Best set was "+str(max_set)+" with accuracy of "+str(max_accuracy))
@@ -116,8 +119,16 @@ def cross_validation(data_in, feature_set):
     accuracy = num_correct / len(data)
     return accuracy
 
-features_naive = set({1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-features_accurate = set({2, 9, 10})
+alg_choice = int(input("""Which algorithm do you want to use?
+        1) Forward Selection
+        2) Backward Selection
 
-print(cross_validation(filein, features_naive))
-print(cross_validation(filein, features_accurate))
+        """))
+
+if alg_choice == 1:
+    search_feature_space_forward(filein)
+elif alg_choice == 2:
+    search_feature_space_backward(filein)
+else:
+    print("Input not recognized. Quitting.")
+
