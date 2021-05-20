@@ -1,6 +1,7 @@
 import fileinput
 from statistics import fmean, stdev
 from random import randint
+from math import dist
 
 filein = []
 num_features = 0
@@ -83,6 +84,40 @@ def search_feature_space_backward(data_in):
 
     print("Best set was "+str(max_set)+" with accuracy of "+str(max_accuracy))
 
+def cross_validation(data_in, feature_set):
+    num_correct = 0
 
+    #only consider features in feature set
+    data = []
+    for d in data_in:
+        row = [ d[f] for f in feature_set ] 
+        row.insert(0, d[0])
+        data.append(row)
 
-search_feature_space_backward(filein)
+    for i in range(len(data)): # choose an data point to ignore
+        correct_label_i = data[i][0]
+
+        nearest_neighbor_dist = float('inf')
+        nearest_neighbor_index = float('inf')
+        nearest_neighbor_label = -1
+        for j in range(len(data)):
+            if i != j:
+                # find distance
+                distance = dist(data[i][1:], data[j][1:])
+                #compare to closest so far
+                if distance < nearest_neighbor_dist:
+                    nearest_neighbor_dist = distance
+                    nearest_neighbor_index = j
+                    nearest_neighbor_label = data[j][0]
+
+        if nearest_neighbor_label == correct_label_i:
+            num_correct+=1
+
+    accuracy = num_correct / len(data)
+    return accuracy
+
+features_naive = set({1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
+features_accurate = set({2, 9, 10})
+
+print(cross_validation(filein, features_naive))
+print(cross_validation(filein, features_accurate))
