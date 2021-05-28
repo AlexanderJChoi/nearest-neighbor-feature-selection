@@ -1,0 +1,87 @@
+Enter the name of the file you would like to use:This dataset has 10 features, with 300 instances.
+Which algorithm do you want to use?
+        1) Forward Selection
+        2) Backward Selection
+
+        Considering all features: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}: accuracy of 0.6966666666666667
+On search level 1
+Considering features {2, 3, 4, 5, 6, 7, 8, 9, 10}: accuracy of 0.7066666666666667
+Considering features {1, 3, 4, 5, 6, 7, 8, 9, 10}: accuracy of 0.7
+Considering features {1, 2, 4, 5, 6, 7, 8, 9, 10}: accuracy of 0.7033333333333334
+Considering features {1, 2, 3, 5, 6, 7, 8, 9, 10}: accuracy of 0.7666666666666667
+Considering features {1, 2, 3, 4, 6, 7, 8, 9, 10}: accuracy of 0.7166666666666667
+Considering features {1, 2, 3, 4, 5, 7, 8, 9, 10}: accuracy of 0.6966666666666667
+Considering features {1, 2, 3, 4, 5, 6, 8, 9, 10}: accuracy of 0.7133333333333334
+Considering features {1, 2, 3, 4, 5, 6, 7, 9, 10}: accuracy of 0.75
+Considering features {1, 2, 3, 4, 5, 6, 7, 8, 10}: accuracy of 0.7233333333333334
+Considering features {1, 2, 3, 4, 5, 6, 7, 8, 9}: accuracy of 0.7433333333333333
+Removing 4 from the feature set
+Found new max: {1, 2, 3, 5, 6, 7, 8, 9, 10} with accuracy: 0.7666666666666667
+On search level 2
+Considering features {2, 3, 5, 6, 7, 8, 9, 10}: accuracy of 0.7466666666666667
+Considering features {1, 3, 5, 6, 7, 8, 9, 10}: accuracy of 0.7533333333333333
+Considering features {1, 2, 5, 6, 7, 8, 9, 10}: accuracy of 0.7333333333333333
+Considering features {1, 2, 3, 6, 7, 8, 9, 10}: accuracy of 0.7866666666666666
+Considering features {1, 2, 3, 5, 7, 8, 9, 10}: accuracy of 0.7166666666666667
+Considering features {1, 2, 3, 5, 6, 8, 9, 10}: accuracy of 0.78
+Considering features {1, 2, 3, 5, 6, 7, 9, 10}: accuracy of 0.7866666666666666
+Considering features {1, 2, 3, 5, 6, 7, 8, 10}: accuracy of 0.7766666666666666
+Considering features {1, 2, 3, 5, 6, 7, 8, 9}: accuracy of 0.78
+Removing 5 from the feature set
+Found new max: {1, 2, 3, 6, 7, 8, 9, 10} with accuracy: 0.7866666666666666
+On search level 3
+Considering features {2, 3, 6, 7, 8, 9, 10}: accuracy of 0.78
+Considering features {1, 3, 6, 7, 8, 9, 10}: accuracy of 0.7966666666666666
+Considering features {1, 2, 6, 7, 8, 9, 10}: accuracy of 0.7633333333333333
+Considering features {1, 2, 3, 7, 8, 9, 10}: accuracy of 0.7066666666666667
+Considering features {1, 2, 3, 6, 8, 9, 10}: accuracy of 0.79
+Considering features {1, 2, 3, 6, 7, 9, 10}: accuracy of 0.7766666666666666
+Considering features {1, 2, 3, 6, 7, 8, 10}: accuracy of 0.7733333333333333
+Considering features {1, 2, 3, 6, 7, 8, 9}: accuracy of 0.7866666666666666
+Removing 2 from the feature set
+Found new max: {1, 3, 6, 7, 8, 9, 10} with accuracy: 0.7966666666666666
+On search level 4
+Considering features {3, 6, 7, 8, 9, 10}: accuracy of 0.7933333333333333
+Considering features {1, 6, 7, 8, 9, 10}: accuracy of 0.7733333333333333
+Considering features {1, 3, 7, 8, 9, 10}: accuracy of 0.6966666666666667
+Considering features {1, 3, 6, 8, 9, 10}: accuracy of 0.7833333333333333
+Considering features {1, 3, 6, 7, 9, 10}: accuracy of 0.81
+Considering features {1, 3, 6, 7, 8, 10}: accuracy of 0.82
+Considering features {1, 3, 6, 7, 8, 9}: accuracy of 0.81
+Removing 9 from the feature set
+Found new max: {1, 3, 6, 7, 8, 10} with accuracy: 0.82
+On search level 5
+Considering features {3, 6, 7, 8, 10}: accuracy of 0.8333333333333334
+Considering features {1, 6, 7, 8, 10}: accuracy of 0.8066666666666666
+Considering features {1, 3, 7, 8, 10}: accuracy of 0.7066666666666667
+Considering features {1, 3, 6, 8, 10}: accuracy of 0.8133333333333334
+Considering features {1, 3, 6, 7, 10}: accuracy of 0.8333333333333334
+Considering features {1, 3, 6, 7, 8}: accuracy of 0.8366666666666667
+Removing 10 from the feature set
+Found new max: {1, 3, 6, 7, 8} with accuracy: 0.8366666666666667
+On search level 6
+Considering features {8, 3, 6, 7}: accuracy of 0.85
+Considering features {8, 1, 6, 7}: accuracy of 0.83
+Considering features {8, 1, 3, 7}: accuracy of 0.7066666666666667
+Considering features {8, 1, 3, 6}: accuracy of 0.8666666666666667
+Considering features {1, 3, 6, 7}: accuracy of 0.8666666666666667
+Removing 7 from the feature set
+Found new max: {8, 1, 3, 6} with accuracy: 0.8666666666666667
+On search level 7
+Considering features {8, 3, 6}: accuracy of 0.88
+Considering features {8, 1, 6}: accuracy of 0.8133333333333334
+Considering features {8, 1, 3}: accuracy of 0.6733333333333333
+Considering features {1, 3, 6}: accuracy of 0.94
+Removing 8 from the feature set
+Found new max: {1, 3, 6} with accuracy: 0.94
+On search level 8
+Considering features {3, 6}: accuracy of 0.9566666666666667
+Considering features {1, 6}: accuracy of 0.85
+Considering features {1, 3}: accuracy of 0.7233333333333334
+Removing 1 from the feature set
+Found new max: {3, 6} with accuracy: 0.9566666666666667
+On search level 9
+Considering features {6}: accuracy of 0.86
+Considering features {3}: accuracy of 0.74
+Removing 3 from the feature set
+Best set was {3, 6} with accuracy of 0.9566666666666667
