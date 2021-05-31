@@ -3,6 +3,7 @@ from statistics import fmean, stdev
 from random import randint
 from math import dist
 
+#### Beginning of Reading input FILE ###
 filein = []
 num_features = 0
 
@@ -17,13 +18,22 @@ num_features = len(filein[0]) - 1
 data_len = len(filein)
 
 print("This dataset has "+str(num_features)+" features, with "+str(data_len)+" instances.")
+#### End of Reading input FILE ###
 
+# Normalizes the values of an array of numbers
+# arrayin is an array of numbers
+# arrayout is an empty array, where the normalized numbers are stored
 def normalize(arrayin, arrayout):
     mean_val = fmean(arrayin)
     stddev_val = stdev(arrayin, mean_val)
     for x in arrayin:
         arrayout.append((x - mean_val) / stdev_val)
 
+# Uses forward feature search to find the best set of features 
+# data_in is a 2-D array of data points
+# each element of data_in has a class (either 1 or 2), and several features
+# all elements should have the same number of features
+# features should be represented as numbers
 def search_feature_space_forward(data_in):
     all_features = range(1,num_features+1) #num_features+1 is not included
     current_set = set()
@@ -31,7 +41,7 @@ def search_feature_space_forward(data_in):
     max_accuracy = 0
 
     search_level = 1
-    while(len(current_set) < num_features):
+    while(len(current_set) < num_features): 
         print("On search level " + str(search_level))
         max_i = -1
         max_accuracy_i = 0
@@ -55,6 +65,11 @@ def search_feature_space_forward(data_in):
 
     print("Best set was "+str(max_set)+" with accuracy of "+str(max_accuracy))
 
+# Uses backward feature search to find the best set of features 
+# data_in is a 2-D array of data points
+# each element of data_in has a class (either 1 or 2), and several features
+# all elements should have the same number of features
+# features should be represented as numbers
 def search_feature_space_backward(data_in):
     all_features = range(1,num_features+1) #num_features+1 is not included
     current_set = set(all_features)
@@ -87,6 +102,10 @@ def search_feature_space_backward(data_in):
 
     print("Best set was "+str(max_set)+" with accuracy of "+str(max_accuracy))
 
+    
+# Use leave-one-out cross-validation to test accuracy of a nearest neighbor model
+# data_in is a 2-D array of the datapoints
+# feature_set is the set of features to test
 def cross_validation(data_in, feature_set):
     num_correct = 0
 
@@ -119,6 +138,8 @@ def cross_validation(data_in, feature_set):
     accuracy = num_correct / len(data)
     return accuracy
 
+
+#### Beginning of interface ###
 alg_choice = int(input("""Which algorithm do you want to use?
         1) Forward Selection
         2) Backward Selection
@@ -132,3 +153,4 @@ elif alg_choice == 2:
 else:
     print("Input not recognized. Quitting.")
 
+#### End of interface ###
